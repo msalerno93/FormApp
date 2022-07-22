@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react'
 
 function App() {
+
+  const [text, setText] = useState('')
+
+  const clickHandle = (e) => {
+    e.preventDefault()
+    setText(text)
+    setText('')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <h1 className="App">
+        Form Application
+        <div>
+          <form onChange={(e) => setText(e.target.value)} value={text} placeholder='Type Here'>
+            <input>
+            </input>
+          </form><br></br>
+          <button onSubmit={clickHandle}>Submit</button>
+        </div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {text}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    </h1>
   );
 }
 
